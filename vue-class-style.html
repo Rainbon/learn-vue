@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 中的class style</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="box">
+        <p :class="[red,blue]">hello vue !</p>
+        <p :class="{black: isB, orange: isO}">hello vue2.0</p>
+        <p :class="jsonColor">hello world !</p>
+    </div>
+    <hr>
+
+    <div class="content">
+        <span :style="{ color: col, fontSize: font + 'px'}">
+            这是一个content
+        </span>
+        <hr>
+        <span :style="[jsonSpan,jsonSpan2]">
+            这是一个content
+        </span>
+    </div>
+
+</div>
+<script>
+    window.onload = function () {
+        new Vue({
+            el: '#app',
+            data: {
+                red: 'class-red',
+                blue: 'class-blue',
+                isB: true,
+                isO: true,
+                jsonColor: {
+                    orange: true,
+                    grey: true
+                },
+                col: 'red',
+                font: 30,
+                jsonSpan: {
+                    color: 'red',
+                    fontSize: '12px'
+                },
+                jsonSpan2: {
+                    display:'block',
+                    width:'100px',
+                    height: '100px',
+                    backgroundColor: 'yellow',
+                }
+            }
+        })
+    }
+</script>
+<style>
+    .class-red{
+        color: red;
+    }
+    .class-blue{
+        background-color: blue;
+    }
+    .black{
+        background-color: black;
+    }
+    .orange{
+        color: orange;
+    }
+    .grey{
+        background-color: grey;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 阻止默认事件 防止冒泡</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="father" @click="fshow">
+        我是父组件
+        <div class="son" @click.stop="sshow">
+            我是子组件
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="box" @contextmenu="show" >
+        hello vue !
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        new Vue({
+            el: '#app',
+            methods: {
+                fshow: function () {
+                    alert('父 被点击了');
+                },
+                sshow: function (ev) {
+                    //阻止事件冒泡的两种方法
+                    //一：传参 @click="show($event)" ev.cancelBubble = true;
+                    //二：@click.stop="sshow" 推荐
+                    //ev.cancelBubble = true;
+                    alert('子 被点击了');
+                },
+                show: function (ev) {
+                    //阻止默认 右键事件的两种方法
+                    //一：ev.preventDefault();
+                    //二：@contextmenu.prevent="show"  推荐
+                    ev.preventDefault();
+                    alert('box 被右键点击了')
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>
