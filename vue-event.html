@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 常用的事件</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+<div id="app">
+    <button @click="show">显示/隐藏</button>
+    <div v-show="msg" class="box animated" transition="expand" >
+        hello vue
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        new Vue({
+            el: '#app',
+            data: {
+                msg: true
+            },
+            methods:{
+                show: function () {
+                    this.msg = !this.msg;
+                }
+            }
+        })
+
+    }
+    Vue.transition('bounce', {
+        enterClass: 'flipInX',
+        leaveClass: 'flipInY'
+    })
+</script>
+<style>
+    /* 必需 */
+    .expand-transition {
+        transition: all .3s ease;
+        height: 30px;
+        background-color: #eee;
+    }
+    /* .expand-enter 定义进入的开始状态 */
+    /* .expand-leave 定义离开的结束状态 */
+    .expand-enter, .expand-leave {
+        height: 0;
+        opacity: 0;
+    }
+</style>
+</body>
+</html>

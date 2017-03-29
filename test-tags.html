@@ -8,8 +8,24 @@
 <body>
 <div id="app">
     <h1 v-text="title"></h1>
+    <h2 v-html="title2"></h2>
+    <h3>{{{title2}}}</h3>
     <input  type="text" v-model="msg">
-    <p>{{msg}}</p>
+    <h1 class="red">{{msg}}</h1>
+    <h2 class="blue">{{*msg}}</h2>
+    <h3 class="yellow">{{{msg}}}</h3>
+
+    <hr>
+
+    <ul>
+        <li v-for="item in fruit">{{item}}-{{$index}}</li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <li v-for="veg in vegetables">{{veg}}-{{$key}}-{{$index}}</li>
+    </ul>
 </div>
 
  <script>
@@ -17,11 +33,29 @@
          new  Vue({
              el: '#app',
              data: {
-                 msg: 'hello vue !',
-                 title: 'vue 常用的语法'
+                 msg: 'vue 常用的语法',
+                 title: 'vue 常用的语法',
+                 title2: '<strong>vue</strong> 常用的语法',
+                 fruit:['apple','peal','banana','tomato'],
+                 vegetables:{
+                     first: 'tomato',
+                     second: 'tomato',
+                     third: 'egg'
+                 }
              }
          })
      }
  </script>
+<style>
+    .red{
+        color: red;
+    }
+    .blue{
+        color:blue;
+    }
+    .yellow{
+        color:yellow;
+    }
+</style>
 </body>
 </html>
