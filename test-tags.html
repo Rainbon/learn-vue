@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue常用的语法</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-text="title"></h1>
+    <input  type="text" v-model="msg">
+    <p>{{msg}}</p>
+</div>
+
+ <script>
+     window.onload = function () {
+         new  Vue({
+             el: '#app',
+             data: {
+                 msg: 'hello vue !',
+                 title: 'vue 常用的语法'
+             }
+         })
+     }
+ </script>
+</body>
+</html>
